@@ -1,6 +1,8 @@
+library(e1071)
+
 makemodel<- function(file,repeats)
   {
-  accuracies<-vector(mode="numeric",length=10);
+  accuracies<-vector(mode="numeric",length=repeats);
   for(i in 1:repeats){
   data <- read.table(file,header=TRUE);
   noOfSamples <- nrow(data);
@@ -23,8 +25,10 @@ makemodel<- function(file,repeats)
 mergearrays<- function (a, b)
 {
   m <- cbind(a,b);
-  return (m);
-  
+  return (m);  
 }
+
+fileName <- "D:/date.txt" #calea catre fisierul cu datele
+makemodel(fileName, 2)
 
 
