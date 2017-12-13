@@ -36,7 +36,7 @@ makemodelArray<- function(dataset,repeats)
 {
   accuracies<-vector(mode="numeric",length=repeats);
   for(i in 1:repeats){
-    data <- datas
+    data <- dataset
     noOfSamples <- nrow(data);
     random <- sample (1:noOfSamples,replace=FALSE);
     noOfTrainingSamples <- round(0.66* noOfSamples);
