@@ -2,3 +2,4 @@ Scan represents value for findcontours parameter
 0=CV_RETR_EXTERNAL
 1=CV_RETR_LIST
 3=CV_RETR_TREE
+ms at end of file name means only contours without descendants in hierarchy are selected
