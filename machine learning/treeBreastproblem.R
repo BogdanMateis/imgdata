@@ -27,12 +27,7 @@ rpart.model<- rpart(Class~.,trainset,method="class")
 predTree<- predict(rpart.model,testset[,-classColumn],type="class")
 predSVM<- predict(svm.model,testset[,-classColumn],type="class")
 
-#curba ROC
-probSVM<-predict(svm.model,testset[,-classColumn],probability=TRUE)
-svm.predictii<-attr(probSVM,"probabilities")[,1]
-reale<-testset[classColumn][,1]
-etichete<-as.integer(reale)-1
-pred<-prediction(as.vector(probSVM),etichete)
+
 
 #matricea de confuzie
 confusionTree<-table(predTree,testset[,classColumn])
@@ -51,3 +46,10 @@ Kappa.test(predSVM,testset[,classColumn])
 #wilcox
 wilcox.test(accuraciesSVM,accuraciesTree,paired=TRUE)
 }
+
+#curba ROC
+probSVM<-predict(svm.model,testset[,-classColumn],probability=TRUE)
+svm.predictii<-attr(probSVM,"probabilities")[,1]
+reale<-testset[classColumn][,1]
+etichete<-as.integer(reale)-1
+pred<-prediction(as.vector(probSVM),etichete)

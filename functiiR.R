@@ -54,3 +54,12 @@ makemodelArray<- function(dataset,repeats)
   }
   return(mean(accuracies));
 }
+
+file1<- read.table("d:/programming/r/data/thresh211scan1ms.txt",header=TRUE)
+file2<- read.table("d:/programming/r/data/thresh215scan1.txt",header=TRUE)
+file3<- read.table("d:/programming/r/data/thresh160scan0ms.txt",header=TRUE)
+file4<- read.table("d:/programming/r/data/thresh160scan0.txt",header=TRUE)
+file5<- read.table("d:/programming/r/data/thresh180scan0.txt",header=TRUE)
+file6<- read.table("d:/programming/r/data/thresh180scan0ms",header=TRUE)
+file7<-  read.table("d:/programming/r/data/thresh200scan0ms",header=TRUE)
+file8<-  read.table("d:/programming/r/data/thresh200scan0.txt",header=TRUE)
