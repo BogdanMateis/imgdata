@@ -44,16 +44,20 @@ makemodelArray<- function(dataset,repeats)
     randomTest <- random[(noOfTrainingSamples +1):noOfSamples];
     train <- data[randomTrain,];
     test <- data[randomTest,];
-    claseTest<- train[,c("tip")];
-    train <- subset(train, select=- tip);
-    svm_model <- svm(train,claseTest);
+   # claseTest<- train[,c("tip")];
+   # train <- subset(train, select=- tip);
+    svm_model <- svm(tip~.,data=train,kernel="radial",cost=9,gamma=0.1);
     clase <- test[,c("tip")];
     test <- subset(test, select=- tip);
     pred <- predict(svm_model,test);
     accuracies[i] <- classAgreement(table(pred,clase))$diag;
   }
-  return(mean(accuracies));
+  return(accuracies);
 }
+obj <- tune(svm, tip~., data = file7, 
+            ranges = list(gamma = 1*(0.05:20), cost =1* (1:100)),
+            tunecontrol = tune.control(sampling = "fix")
+)
 
 file1<- read.table("d:/programming/r/data/thresh211scan1ms.txt",header=TRUE)
 file2<- read.table("d:/programming/r/data/thresh215scan1.txt",header=TRUE)
@@ -61,5 +65,5 @@ file3<- read.table("d:/programming/r/data/thresh160scan0ms.txt",header=TRUE)
 file4<- read.table("d:/programming/r/data/thresh160scan0.txt",header=TRUE)
 file5<- read.table("d:/programming/r/data/thresh180scan0.txt",header=TRUE)
 file6<- read.table("d:/programming/r/data/thresh180scan0ms",header=TRUE)
-file7<-  read.table("d:/programming/r/data/thresh200scan0ms",header=TRUE)
-file8<-  read.table("d:/programming/r/data/thresh200scan0.txt",header=TRUE)
+file7<-  read.table("d:/programming/r/data/thresh215scan1.txt",header=TRUE)
+file8<-  read.table("d:/programming/r/data/thresh217scan1.txt",header=TRUE)
