@@ -52,7 +52,7 @@ makemodelArray<- function(dataset,repeats)
     pred <- predict(svm_model,test);
     accuracies[i] <- classAgreement(table(pred,clase))$diag;
   }
-  return(accuracies);
+  return(mean(accuracies));
 }
 obj <- tune(svm, tip~., data = file7, 
             ranges = list(gamma = 1*(0.05:20), cost =1* (1:100)),
@@ -63,7 +63,7 @@ file1<- read.table("d:/programming/r/data/thresh211scan1ms.txt",header=TRUE)
 file2<- read.table("d:/programming/r/data/thresh215scan1.txt",header=TRUE)
 file3<- read.table("d:/programming/r/data/thresh160scan0ms.txt",header=TRUE)
 file4<- read.table("d:/programming/r/data/thresh160scan0.txt",header=TRUE)
-file5<- read.table("d:/programming/r/data/thresh180scan0.txt",header=TRUE)
-file6<- read.table("d:/programming/r/data/thresh180scan0ms",header=TRUE)
+file5<- read.table("d:/programming/r/data/thresh220scan1.txt",header=TRUE)
+file6<- read.table("d:/programming/r/data/thresh221scan1ms.txt",header=TRUE)
 file7<-  read.table("d:/programming/r/data/thresh215scan1.txt",header=TRUE)
 file8<-  read.table("d:/programming/r/data/thresh217scan1.txt",header=TRUE)
